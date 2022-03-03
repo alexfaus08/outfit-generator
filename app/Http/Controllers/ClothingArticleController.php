@@ -9,7 +9,7 @@ class ClothingArticleController extends Controller
 {
     public function index()
     {
-        //
+        return ClothingArticle::all();
     }
 
     public function create()

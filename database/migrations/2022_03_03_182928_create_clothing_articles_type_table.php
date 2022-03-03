@@ -13,7 +13,7 @@ class CreateClothingArticlesTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('clothing_articles_type', function (Blueprint $table) {
+        Schema::create('clothing_article_types', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('name', 15);

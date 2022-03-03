@@ -18,4 +18,12 @@ class ClothingArticleTopController extends Controller
     {
         return ClothingArticle::where(['clothing_article_type_id' => $this->top_type_id])->get();
     }
+
+    public function show()
+    {
+        return ClothingArticle::where(['clothing_article_type_id' => $this->top_type_id])
+            ->inRandomOrder()
+            ->limit(1)
+            ->get();
+    }
 }

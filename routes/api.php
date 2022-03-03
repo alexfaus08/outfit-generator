@@ -32,6 +32,7 @@ Route::get('/article-types', [ClothingArticleTypeController::class, 'index']);
 
 // clothing article type top routes
 Route::get('/tops', [ClothingArticleTopController::class, 'index']);
+Route::get('/rantop', [ClothingArticleTopController::class, 'show']);
 
 // clothing article type bottom routes
 Route::get('/bottoms', [ClothingArticleBottomController::class, 'index']);

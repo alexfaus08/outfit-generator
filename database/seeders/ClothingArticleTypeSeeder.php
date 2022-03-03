@@ -10,10 +10,10 @@ class ClothingArticleTypeSeeder extends Seeder
     public function run()
     {
         ClothingArticleType::create(
-          ['name' => 'top']
+            ['name' => 'top']
         );
         ClothingArticleType::create(
-          ['name' => 'bottom']
+            ['name' => 'bottom']
         );
         ClothingArticleType::create(
             ['name' => 'shoes']

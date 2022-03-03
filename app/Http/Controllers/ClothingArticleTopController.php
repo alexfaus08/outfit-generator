@@ -16,10 +16,6 @@ class ClothingArticleTopController extends Controller
 
     public function index()
     {
-        $article = ClothingArticle::where(['clothing_article_type_id' => $this->top_type_id])->first();
-
-        dd($article->clothingArticleType);
-
         return ClothingArticle::where(['clothing_article_type_id' => $this->top_type_id])->get();
     }
 }

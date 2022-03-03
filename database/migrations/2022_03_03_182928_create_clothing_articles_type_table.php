@@ -18,6 +18,14 @@ class CreateClothingArticlesTypeTable extends Migration
             $table->timestamps();
             $table->string('name', 15);
         });
+
+        DB::table('clothing_article_types')->insert([
+                ['name' => 'tops'],
+                ['name' => 'bottoms'],
+                ['name' => 'shoes'],
+                ['name' => 'fullbody'],
+            ]
+        );
     }
 
     /**

@@ -10,7 +10,8 @@ class ClothingArticleBottomController extends Controller
 {
     private $bottom_type_id;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->bottom_type_id = ClothingArticleType::where(['name' => 'bottom'])->first()->id;
     }
 

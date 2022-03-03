@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\ClothingArticleType;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        User::factory()->count(2)->create();
         $this->call(ClothingArticleTypeSeeder::class);
+        $this->call(ClothingArticleSeeder::class);
     }
 }

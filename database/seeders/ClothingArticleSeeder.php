@@ -22,6 +22,8 @@ class ClothingArticleSeeder extends Seeder
         $fullbody = ClothingArticleType::create(
             ['name' => 'fullbody']
         );
+
+//        $top = ClothingarticleType::where(['name' => 'top'])->first();
         ClothingArticle::create(
             ['image_path' => '/storage/app/images/tops/yellow-t-shirt.png', 'clothing_article_type_id' => $top->id,
             'user_id' => 1]

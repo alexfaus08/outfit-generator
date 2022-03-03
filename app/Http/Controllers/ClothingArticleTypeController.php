@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ClothingArticleType;
 use Illuminate\Http\Request;
 
-class ClothingArticleTypesController extends Controller
+class ClothingArticleTypeController extends Controller
 {
     public function index()
     {

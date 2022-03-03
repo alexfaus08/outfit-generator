@@ -10,9 +10,8 @@ class ClothingArticleSeeder extends Seeder
 {
     public function run()
     {
-
-        $top_type_id = ClothingArticleType::where(['name' => 'tops'])->first()->id;
-        $bottom_type_id = ClothingArticleType::where(['name' => 'bottoms'])->first()->id;
+        $top_type_id = ClothingArticleType::where(['name' => 'top'])->first()->id;
+        $bottom_type_id = ClothingArticleType::where(['name' => 'bottom'])->first()->id;
         $shoes_type_id = ClothingArticleType::where(['name' => 'shoes'])->first()->id;
         $fullbody_type_id = ClothingArticleType::where(['name' => 'fullbody'])->first()->id;
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Constants;
+use App\TypeId;
 use App\Models\ClothingArticle;
 use App\Models\ClothingArticleType;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class ClothingArticleTopController extends Controller
 
     public function index()
     {
-        return ClothingArticleTopResource::collection(ClothingArticle::where(['clothing_article_type_id' => Constants::Top->value])->get());
+        return ClothingArticleTopResource::collection(ClothingArticle::where(['clothing_article_type_id' => TypeId::Top])->get());
     }
 
     public function show()
@@ -21,11 +21,11 @@ class ClothingArticleTopController extends Controller
         $chance_of_fullbody = 50;
         $dice_roll = rand(0,99);
         if ($dice_roll > $chance_of_fullbody) {
-            return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => Constants::Fullbody])
+            return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => TypeId::Fullbody])
                 ->inRandomOrder()
                 ->first());
         }
-        return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => Constants::Top])
+        return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => TypeId::Top])
             ->inRandomOrder()
             ->first());
     }

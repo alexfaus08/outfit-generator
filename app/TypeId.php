@@ -2,7 +2,7 @@
 
 namespace App;
 
-enum Constants: int
+enum TypeId: int
 {
     case Top = 1;
     case Bottom = 2;

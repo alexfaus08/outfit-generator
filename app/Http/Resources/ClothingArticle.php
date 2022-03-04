@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ClothingArticleTop extends JsonResource
+class ClothingArticle extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,12 +14,9 @@ class ClothingArticleTop extends JsonResource
      */
     public function toArray($request)
     {
-        // FIXME see if there is a way to replace 4 with top_id
-        $isFullbody = $this->clothing_article_type_id === 4;
         return [
             'id' => $this->id,
             'image_path' => $this->image_path,
-            'is_fullbody' => $isFullbody,
         ];
     }
 }

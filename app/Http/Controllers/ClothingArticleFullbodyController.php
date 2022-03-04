@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\ClothingArticle;
 use App\Models\ClothingArticleType;
 use Illuminate\Http\Request;
+use App\Http\Resources\ClothingArticleTop as ClothingArticleTopResource;
+
 
 class ClothingArticleFullbodyController extends Controller
 {
@@ -16,6 +18,6 @@ class ClothingArticleFullbodyController extends Controller
 
     public function index()
     {
-        return ClothingArticle::where(['clothing_article_type_id' => $this->fullbody_type_id])->get();
+        return ClothingArticleTopResource::collection(ClothingArticle::where(['clothing_article_type_id' => $this->fullbody_type_id])->get());
     }
 }

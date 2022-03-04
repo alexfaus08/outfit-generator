@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // clothing article routes
+// TODO upload article
 Route::get('/articles', [ClothingArticleController::class, 'index']);
 
 // clothing article type routes
@@ -36,9 +37,13 @@ Route::get('/random-top', [ClothingArticleTopController::class, 'show']);
 
 // clothing article type bottom routes
 Route::get('/bottoms', [ClothingArticleBottomController::class, 'index']);
+Route::get('/random-bottom', [ClothingArticleBottomController::class, 'show']);
 
 // clothing article type shoes routes
 Route::get('/shoes', [ClothingArticleShoesController::class, 'index']);
+Route::get('/random-shoes', [ClothingArticleShoesController::class, 'show']);
 
 // clothing article type fullbody routes
 Route::get('/fullbody', [ClothingArticleFullbodyController::class, 'index']);
+Route::get('/random-fullbody', [ClothingArticleFullbodyController::class, 'show']);
+

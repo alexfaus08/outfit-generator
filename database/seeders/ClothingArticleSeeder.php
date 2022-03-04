@@ -4,16 +4,17 @@ namespace Database\Seeders;
 
 use App\Models\ClothingArticle;
 use App\Models\ClothingArticleType;
+use App\TypeId;
 use Illuminate\Database\Seeder;
 
 class ClothingArticleSeeder extends Seeder
 {
     public function run()
     {
-        $top_type_id = ClothingArticleType::where(['name' => 'top'])->first()->id;
-        $bottom_type_id = ClothingArticleType::where(['name' => 'bottom'])->first()->id;
-        $shoes_type_id = ClothingArticleType::where(['name' => 'shoes'])->first()->id;
-        $fullbody_type_id = ClothingArticleType::where(['name' => 'fullbody'])->first()->id;
+        $top_type_id = TypeId::Top;
+        $bottom_type_id = TypeId::Bottom;
+        $shoes_type_id = TypeId::Shoes;
+        $fullbody_type_id = TypeId::Fullbody;
 
         ClothingArticle::create(
             ['image_path' => '/storage/app/images/tops/yellow-t-shirt.png', 'clothing_article_type_id' => $top_type_id,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants;
 use App\Models\ClothingArticle;
 use App\Models\ClothingArticleType;
 use Illuminate\Http\Request;
@@ -9,17 +10,10 @@ use App\Http\Resources\ClothingArticleTop as ClothingArticleTopResource;
 
 class ClothingArticleTopController extends Controller
 {
-    private $top_type_id;
-    private $fullbody_type_id;
-
-    public function __construct() {
-        $this->top_type_id = ClothingArticleType::where(['name' => 'top'])->first()->id;
-        $this->fullbody_type_id = ClothingArticleType::where(['name' => 'fullbody'])->first()->id;
-    }
 
     public function index()
     {
-        return ClothingArticleTopResource::collection(ClothingArticle::where(['clothing_article_type_id' => $this->top_type_id])->get());
+        return ClothingArticleTopResource::collection(ClothingArticle::where(['clothing_article_type_id' => Constants::Top->value])->get());
     }
 
     public function show()
@@ -27,11 +21,11 @@ class ClothingArticleTopController extends Controller
         $chance_of_fullbody = 50;
         $dice_roll = rand(0,99);
         if ($dice_roll > $chance_of_fullbody) {
-            return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => $this->fullbody_type_id])
+            return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => Constants::Fullbody])
                 ->inRandomOrder()
                 ->first());
         }
-        return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => $this->top_type_id])
+        return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => Constants::Top])
             ->inRandomOrder()
             ->first());
     }

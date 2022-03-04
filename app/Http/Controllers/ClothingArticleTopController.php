@@ -18,13 +18,6 @@ class ClothingArticleTopController extends Controller
 
     public function show()
     {
-        $chance_of_fullbody = 50;
-        $dice_roll = rand(0,99);
-        if ($dice_roll > $chance_of_fullbody) {
-            return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => TypeId::Fullbody])
-                ->inRandomOrder()
-                ->first());
-        }
         return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => TypeId::Top])
             ->inRandomOrder()
             ->first());

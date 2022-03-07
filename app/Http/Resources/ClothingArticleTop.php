@@ -2,8 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\TypeId;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+// TODO if randomizing on FE remove this file
 class ClothingArticleTop extends JsonResource
 {
     /**
@@ -14,8 +16,7 @@ class ClothingArticleTop extends JsonResource
      */
     public function toArray($request)
     {
-        // FIXME see if there is a way to replace 4 with top_id
-        $isFullbody = $this->clothing_article_type_id === 4;
+        $isFullbody = $this->clothing_article_type_id === TypeId::Fullbody;
         return [
             'id' => $this->id,
             'image_path' => $this->image_path,

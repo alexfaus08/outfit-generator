@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ClothingArticle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClothingArticleController extends Controller
 {
@@ -12,14 +13,19 @@ class ClothingArticleController extends Controller
         return ClothingArticle::all();
     }
 
-    public function create()
-    {
-        //
-    }
-
     public function store(Request $request)
     {
-        //
+        // TODO determine if storage should be separate folders, if so change the path var to reflect
+        $path = Storage::putFile('public/images', $request->file('image'));
+        // FIXME change to reverse lookup type
+        $type_id = 2;
+        ClothingArticle::create(
+            [
+                'image_path' => $path,
+                'clothing_article_type_id' => $type_id,
+                'user_id' => $request->user_id,
+            ]
+        );
     }
 
     public function show(ClothingArticle $clothingArticle)

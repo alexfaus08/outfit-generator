@@ -26,23 +26,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // clothing article routes
 // TODO upload article
-Route::get('/articles', [ClothingArticleController::class, 'index']);
-Route::post('/articles', [ClothingArticleController::class, 'store']);
+Route::get('/article', [ClothingArticleController::class, 'index']);
+Route::post('/article', [ClothingArticleController::class, 'store']);
 
 // clothing article type routes
 Route::get('/article-types', [ClothingArticleTypeController::class, 'index']);
 
 // clothing article type top routes
-Route::get('/tops', [ClothingArticleTopController::class, 'index']);
-Route::get('/tops/random', [ClothingArticleTopController::class, 'show']);
+Route::get('/top', [ClothingArticleTopController::class, 'index']);
+Route::get('/top/random', [ClothingArticleTopController::class, 'show']);
 
 // clothing article type bottom routes
-Route::get('/bottoms', [ClothingArticleBottomController::class, 'index']);
-Route::get('/bottoms/random', [ClothingArticleBottomController::class, 'show']);
+Route::get('/bottom', [ClothingArticleBottomController::class, 'index']);
+Route::get('/bottom/random', [ClothingArticleBottomController::class, 'show']);
 
 // clothing article type shoes routes
-Route::get('/shoes', [ClothingArticleShoesController::class, 'index']);
-Route::get('/shoes/random', [ClothingArticleShoesController::class, 'show']);
+Route::get('/shoe', [ClothingArticleShoesController::class, 'index']);
+Route::get('/shoe/random', [ClothingArticleShoesController::class, 'show']);
 
 // clothing article type fullbody routes
 Route::get('/fullbody', [ClothingArticleFullbodyController::class, 'index']);

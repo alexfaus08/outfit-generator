@@ -6,19 +6,19 @@ use App\TypeId;
 use App\Models\ClothingArticle;
 use App\Models\ClothingArticleType;
 use Illuminate\Http\Request;
-use App\Http\Resources\ClothingArticleTop as ClothingArticleTopResource;
+use App\Http\Resources\ClothingArticle as ClothingArticleResource;
 
 class ClothingArticleTopController extends Controller
 {
 
     public function index()
     {
-        return ClothingArticleTopResource::collection(ClothingArticle::where(['clothing_article_type_id' => TypeId::Top])->get());
+        return ClothingArticleResource::collection(ClothingArticle::where(['clothing_article_type_id' => TypeId::Top])->get());
     }
 
     public function show()
     {
-        return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => TypeId::Top])
+        return new ClothingArticleResource(ClothingArticle::where(['clothing_article_type_id' => TypeId::Top])
             ->inRandomOrder()
             ->first());
     }

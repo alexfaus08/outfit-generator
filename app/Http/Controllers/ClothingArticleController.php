@@ -6,6 +6,7 @@ use App\Models\ClothingArticle;
 use App\Models\ClothingArticleType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
 
 class ClothingArticleController extends Controller
 {
@@ -45,6 +46,7 @@ class ClothingArticleController extends Controller
 
     public function destroy(ClothingArticle $clothingArticle)
     {
-        //
+        $clothingArticle->delete();
+        return response([], Response::HTTP_NO_CONTENT);
     }
 }

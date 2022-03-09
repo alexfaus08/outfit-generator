@@ -25,9 +25,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // clothing article routes
-// TODO upload article
 Route::get('/clothingArticle', [ClothingArticleController::class, 'index']);
 Route::post('/clothingArticle', [ClothingArticleController::class, 'store']);
+// TODO: delete from image storage
 Route::delete('/clothingArticle/{clothingArticle}', [ClothingArticleController::class, 'destroy']);
 Route::get('/clothingArticle/{clothingArticle}', [ClothingArticleController::class, 'show']);
 

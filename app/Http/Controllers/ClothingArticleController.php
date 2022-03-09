@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClothingArticle;
+use App\Http\Resources\ClothingArticle as ClothingArticleResource;
 use App\Models\ClothingArticleType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -27,11 +28,12 @@ class ClothingArticleController extends Controller
                 'user_id' => $request->user_id,
             ]
         );
+        return response([], Response::HTTP_NO_CONTENT);
     }
 
     public function show(ClothingArticle $clothingArticle)
     {
-        //
+        return ClothingArticleResource::make($clothingArticle);
     }
 
     public function edit(ClothingArticle $clothingArticle)

@@ -31,24 +31,24 @@ class ClothingArticleController extends Controller
         return response([], Response::HTTP_NO_CONTENT);
     }
 
-    public function show(ClothingArticle $clothingArticle)
+    public function show(ClothingArticle $clothing_article)
     {
-        return ClothingArticleResource::make($clothingArticle);
+        return ClothingArticleResource::make($clothing_article);
     }
 
-    public function edit(ClothingArticle $clothingArticle)
+    public function edit(ClothingArticle $clothing_article)
     {
         //
     }
 
-    public function update(Request $request, ClothingArticle $clothingArticle)
+    public function update(Request $request, ClothingArticle $clothing_article)
     {
         //
     }
 
-    public function destroy(ClothingArticle $clothingArticle)
+    public function destroy(ClothingArticle $clothing_article)
     {
-        $clothingArticle->delete();
+        $clothing_article->delete();
         return response([], Response::HTTP_NO_CONTENT);
     }
 }

@@ -25,14 +25,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // clothing article routes
-Route::get('/clothingArticle', [ClothingArticleController::class, 'index']);
-Route::post('/clothingArticle', [ClothingArticleController::class, 'store']);
+Route::get('/clothing_article', [ClothingArticleController::class, 'index']);
+Route::post('/clothing_article', [ClothingArticleController::class, 'store']);
 // TODO: delete from image storage
-Route::delete('/clothingArticle/{clothingArticle}', [ClothingArticleController::class, 'destroy']);
-Route::get('/clothingArticle/{clothingArticle}', [ClothingArticleController::class, 'show']);
+Route::delete('/clothing_article/{clothing_article}', [ClothingArticleController::class, 'destroy']);
+Route::get('/clothin_article/{clothing_article}', [ClothingArticleController::class, 'show']);
 
 // clothing article type routes
-Route::get('/clothingArticle-types', [ClothingArticleTypeController::class, 'index']);
+Route::get('/clothing_article-types', [ClothingArticleTypeController::class, 'index']);
 
 // clothing article type top routes
 Route::get('/top', [ClothingArticleTopController::class, 'index']);

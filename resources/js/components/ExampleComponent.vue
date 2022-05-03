@@ -6,12 +6,10 @@
                     <div class="card-header">Example Component</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        Outfit Generator 1.0
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
-
-

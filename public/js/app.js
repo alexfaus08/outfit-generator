@@ -5287,14 +5287,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _GeneratorShow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GeneratorShow */ "./resources/js/views/GeneratorShow.vue");
 //
 //
 //
 //
-//
-//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "App"
+  name: "App",
+  components: {
+    GeneratorShow: _GeneratorShow__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
 });
 
 /***/ }),
@@ -5310,10 +5313,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _components_ClothingArticle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/ClothingArticle */ "./resources/js/components/ClothingArticle.vue");
 //
 //
 //
 //
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "GeneratorShow"
 });
@@ -28200,7 +28207,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    Outfit Generator, yep!\n")])
+  return _c("GeneratorShow")
 }
 var staticRenderFns = []
 render._withStripped = true

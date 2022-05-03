@@ -1,12 +1,12 @@
 <template>
-    <div>
-        Outfit Generator, yep!
-    </div>
+ <GeneratorShow />
 </template>
 
 <script>
+import GeneratorShow from "./GeneratorShow";
 export default {
-    name: "App"
+    name: "App",
+    components: {GeneratorShow}
 }
 </script>
 

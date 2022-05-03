@@ -22,22 +22,22 @@ class ClothingArticleTypeController extends Controller
         //
     }
 
-    public function show(ClothingArticleType $clothingArticleType)
+    public function show(ClothingArticleType $clothing_article_type)
     {
         //
     }
 
-    public function edit(ClothingArticleType $clothingArticleType)
+    public function edit(ClothingArticleType $clothing_article_type)
     {
         //
     }
 
-    public function update(Request $request, ClothingArticleType $clothingArticleType)
+    public function update(Request $request, ClothingArticleType $clothing_article_type)
     {
         //
     }
 
-    public function destroy(ClothingArticleType $clothingArticleType)
+    public function destroy(ClothingArticleType $clothing_article_type)
     {
         //
     }

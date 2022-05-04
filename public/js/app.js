@@ -5270,6 +5270,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ClothingArticle"
 });
@@ -49010,9 +49012,24 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("img", {
+        attrs: {
+          src: "/images/0avbfilCnowFQjvnsYedDblu6mIPouJo4qzvr4RK.png",
+          alt: "outfit",
+          width: "150px",
+        },
+      }),
+    ])
+  },
+]
 render._withStripped = true
 
 

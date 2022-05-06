@@ -2,6 +2,8 @@
   <div class="columns is-centered is-mobile">
     <div class="column is-half has-text-centered">
       <ClothingArticle :clothing-item="top" />
+      <ClothingArticle :clothing-item="bottom" />
+      <ClothingArticle :clothing-item="shoes" />
       <b-button
         type="is-primary"
         @click="getAllClothes"
@@ -37,18 +39,23 @@ export default {
   methods: {
     getAllClothes() {
       this.getTop();
+      this.getBottom();
+      this.getShoes();
     },
     getTop() {
       axios.get('/api/top/random').then((res) => {
-        console.log(res.data.data.image_path);
         this.top = res.data.data.image_path;
       });
     },
     getBottom() {
-
+      axios.get('/api/bottom/random').then((res) => {
+        this.bottom = res.data.data.image_path;
+      });
     },
     getShoes() {
-
+      axios.get('/api/shoes/random').then((res) => {
+        this.shoes = res.data.data.image_path;
+      });
     },
   },
 };

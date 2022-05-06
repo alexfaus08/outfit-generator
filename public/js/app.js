@@ -5342,6 +5342,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5367,17 +5369,30 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getAllClothes: function getAllClothes() {
       this.getTop();
+      this.getBottom();
+      this.getShoes();
     },
     getTop: function getTop() {
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/top/random').then(function (res) {
-        console.log(res.data.data.image_path);
         _this.top = res.data.data.image_path;
       });
     },
-    getBottom: function getBottom() {},
-    getShoes: function getShoes() {}
+    getBottom: function getBottom() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/bottom/random').then(function (res) {
+        _this2.bottom = res.data.data.image_path;
+      });
+    },
+    getShoes: function getShoes() {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/shoes/random').then(function (res) {
+        _this3.shoes = res.data.data.image_path;
+      });
+    }
   }
 });
 
@@ -49158,6 +49173,10 @@ var render = function () {
       { staticClass: "column is-half has-text-centered" },
       [
         _c("ClothingArticle", { attrs: { "clothing-item": _vm.top } }),
+        _vm._v(" "),
+        _c("ClothingArticle", { attrs: { "clothing-item": _vm.bottom } }),
+        _vm._v(" "),
+        _c("ClothingArticle", { attrs: { "clothing-item": _vm.shoes } }),
         _vm._v(" "),
         _c(
           "b-button",

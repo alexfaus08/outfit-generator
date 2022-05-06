@@ -53,9 +53,10 @@ export default {
       });
     },
     getShoes() {
-      axios.get('/api/shoes/random').then((res) => {
+      axios.get('/api/shoe/random').then((res) => {
         this.shoes = res.data.data.image_path;
       });
+      console.log(this.shoes);
     },
   },
 };

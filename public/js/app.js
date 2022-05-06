@@ -5389,9 +5389,10 @@ __webpack_require__.r(__webpack_exports__);
     getShoes: function getShoes() {
       var _this3 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/shoes/random').then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/shoe/random').then(function (res) {
         _this3.shoes = res.data.data.image_path;
       });
+      console.log(this.shoes);
     }
   }
 });

@@ -5277,7 +5277,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'ClothingArticle'
+  name: 'ClothingArticle',
+  props: {
+    clothingItem: {
+      type: String,
+      required: true
+    }
+  }
 });
 
 /***/ }),
@@ -5319,9 +5325,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_ClothingArticle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/ClothingArticle */ "./resources/js/components/ClothingArticle.vue");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_ClothingArticle_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/ClothingArticle.vue */ "./resources/js/components/ClothingArticle.vue");
+//
 //
 //
 //
@@ -5338,14 +5345,39 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "GeneratorShow",
+  name: 'GeneratorShow',
   components: {
-    ClothingArticle: _components_ClothingArticle__WEBPACK_IMPORTED_MODULE_0__["default"]
+    ClothingArticle: _components_ClothingArticle_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  data: function data() {
+    return {
+      top: '',
+      topActive: true,
+      bottom: '',
+      bottomActive: true,
+      shoes: '',
+      shoesActive: true
+    };
   },
   mounted: function mounted() {
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/clothing_article').then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/clothing_article').then(function (res) {
       console.log(res);
     });
+  },
+  methods: {
+    getAllClothes: function getAllClothes() {
+      this.getTop();
+    },
+    getTop: function getTop() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/top/random').then(function (res) {
+        console.log(res.data.data.image_path);
+        _this.top = res.data.data.image_path;
+      });
+    },
+    getBottom: function getBottom() {},
+    getShoes: function getShoes() {}
   }
 });
 
@@ -49016,24 +49048,15 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _vm.clothingItem !== ""
+    ? _c("div", [
+        _c("img", {
+          attrs: { src: _vm.clothingItem, alt: "outfit", width: "150px" },
+        }),
+      ])
+    : _vm._e()
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("img", {
-        attrs: {
-          src: "/images/0avbfilCnowFQjvnsYedDblu6mIPouJo4qzvr4RK.png",
-          alt: "outfit",
-          width: "150px",
-        },
-      }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -49134,15 +49157,13 @@ var render = function () {
       "div",
       { staticClass: "column is-half has-text-centered" },
       [
-        _c("ClothingArticle"),
+        _c("ClothingArticle", { attrs: { "clothing-item": _vm.top } }),
         _vm._v(" "),
-        _c("ClothingArticle"),
-        _vm._v(" "),
-        _c("ClothingArticle"),
-        _vm._v(" "),
-        _c("b-button", { attrs: { type: "is-primary" } }, [
-          _vm._v("\n            Test\n        "),
-        ]),
+        _c(
+          "b-button",
+          { attrs: { type: "is-primary" }, on: { click: _vm.getAllClothes } },
+          [_vm._v("\n      Test\n    ")]
+        ),
       ],
       1
     ),

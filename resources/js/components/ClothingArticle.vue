@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div v-if="clothingItem !== ''">
     <img
-      src="/images/0avbfilCnowFQjvnsYedDblu6mIPouJo4qzvr4RK.png"
+      :src="clothingItem"
       alt="outfit"
       width="150px"
     >
@@ -11,6 +11,12 @@
 <script>
 export default {
   name: 'ClothingArticle',
+  props: {
+    clothingItem: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
 

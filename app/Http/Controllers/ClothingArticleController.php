@@ -20,6 +20,7 @@ class ClothingArticleController extends Controller
     {
         // TODO determine if storage should be separate folders, if so change the path var to reflect
         $path = Storage::putFile('public/images', $request->file('image'));
+        $path = substr($path, 6);
         $type_id = ClothingArticleType::where(['name' => $request->clothing_article_type])->first()->id;
         ClothingArticle::create(
             [

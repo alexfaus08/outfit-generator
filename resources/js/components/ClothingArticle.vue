@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="clothing-article">
     <img
       v-if="clothingItem !== ''"
       :src="clothingItem"
@@ -22,5 +22,9 @@ export default {
 </script>
 
 <style scoped>
-
+img {
+    width:  150px;
+    height: 140px;
+    object-fit: scale-down;
+}
 </style>

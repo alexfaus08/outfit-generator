@@ -1,10 +1,14 @@
 <template>
   <div class="container has-text-centered is-max-desktop">
+    <h1 class="title mt-5">
+      Outfit Generator
+    </h1>
     <div class="columns is-centered">
       <div class="column is-half">
         <div class="box outfit-box">
           <div class="box-content">
             <div class="my-checkbox">
+              🔒
               <b-checkbox v-model="topDisabled" />
             </div>
             <div>
@@ -15,7 +19,8 @@
         <div class="box outfit-box">
           <div class="box-content">
             <div class="my-checkbox">
-              <b-checkbox v-model="bottomDisabled" />
+              🔒
+              <b-checkbox v-model="topDisabled" />
             </div>
             <div>
               <ClothingArticle :clothing-item="bottom" />
@@ -25,7 +30,8 @@
         <div class="box outfit-box">
           <div class="box-content">
             <div class="my-checkbox">
-              <b-checkbox v-model="shoesDisabled" />
+              🔒
+              <b-checkbox v-model="topDisabled" />
             </div>
             <div>
               <ClothingArticle :clothing-item="shoes" />
@@ -107,5 +113,8 @@ export default {
 }
 .my-checkbox {
     align-self: end;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
 }
 </style>

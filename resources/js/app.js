@@ -1,3 +1,6 @@
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -7,6 +10,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+
+Vue.use(Buefy);
 
 /**
  * The following block of code may be used to automatically register your
@@ -26,5 +31,5 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
  */
 
 const app = new Vue({
-    el: '#app',
+    el: '#app'
 });

@@ -19,18 +19,17 @@ class ClothingArticleController extends Controller
     public function store(Request $request)
     {
         // TODO determine if storage should be separate folders, if so change the path var to reflect
-        $path = Storage::putFile('public/images', $request->file('image'));
-        $path = substr($path, 6);
-        $path = '/storage' . $path;
+        $path = Storage::putFile('images', $request->file('image'));
+        $path = '/storage/' . $path;
         $type_id = ClothingArticleType::where(['name' => $request->clothing_article_type])->first()->id;
-        ClothingArticle::create(
+        $clothing_article = ClothingArticle::create(
             [
                 'image_path' => $path,
                 'clothing_article_type_id' => $type_id,
                 'user_id' => $request->user_id,
             ]
         );
-        return response([], Response::HTTP_NO_CONTENT);
+        return response([ "data" => $clothing_article ], Response::HTTP_CREATED);
     }
 
     public function show(ClothingArticle $clothing_article)

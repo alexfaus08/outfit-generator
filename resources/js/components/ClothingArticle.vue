@@ -1,6 +1,7 @@
 <template>
-  <div v-if="clothingItem !== ''">
+  <div>
     <img
+      v-if="clothingItem !== ''"
       :src="clothingItem"
       alt="outfit"
       width="150px"

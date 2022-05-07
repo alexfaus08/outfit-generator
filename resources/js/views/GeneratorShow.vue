@@ -1,16 +1,21 @@
 <template>
-  <div class="columns is-centered is-mobile">
-    <div class="column is-half has-text-centered">
+  <div class="container is-max-desktop">
+    <div
+      class="box outfit-box"
+    >
+      <div class="is-top-right">
+        <b-checkbox class="is-top-right" />
+      </div>
       <ClothingArticle :clothing-item="top" />
-      <ClothingArticle :clothing-item="bottom" />
-      <ClothingArticle :clothing-item="shoes" />
-      <b-button
-        type="is-primary"
-        @click="getAllClothes"
-      >
-        Test
-      </b-button>
     </div>
+    <ClothingArticle :clothing-item="bottom" />
+    <ClothingArticle :clothing-item="shoes" />
+    <b-button
+      type="is-primary"
+      @click="getAllClothes"
+    >
+      Test
+    </b-button>
   </div>
 </template>
 
@@ -63,5 +68,8 @@ export default {
 </script>
 
 <style scoped>
-
+.outfit-box {
+    margin-top: 10px;
+    max-width: 50%;
+}
 </style>

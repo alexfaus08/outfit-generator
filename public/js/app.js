@@ -5354,6 +5354,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5364,11 +5386,11 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       top: '',
-      topActive: true,
+      topDisabled: false,
       bottom: '',
-      bottomActive: true,
+      bottomDisabled: false,
       shoes: '',
-      shoesActive: true
+      shoesDisabled: false
     };
   },
   mounted: function mounted() {
@@ -5378,9 +5400,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getAllClothes: function getAllClothes() {
-      this.getTop();
-      this.getBottom();
-      this.getShoes();
+      if (!this.topDisabled) {
+        this.getTop();
+      }
+
+      if (!this.bottomDisabled) {
+        this.getBottom();
+      }
+
+      if (!this.shoesDisabled) {
+        this.getShoes();
+      }
     },
     getTop: function getTop() {
       var _this = this;
@@ -49158,13 +49188,80 @@ var render = function () {
             1
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "media-right" }, [_c("b-checkbox")], 1),
+          _c(
+            "div",
+            { staticClass: "media-right" },
+            [
+              _c("b-checkbox", {
+                model: {
+                  value: _vm.topDisabled,
+                  callback: function ($$v) {
+                    _vm.topDisabled = $$v
+                  },
+                  expression: "topDisabled",
+                },
+              }),
+            ],
+            1
+          ),
         ]),
       ]),
       _vm._v(" "),
-      _c("ClothingArticle", { attrs: { "clothing-item": _vm.bottom } }),
+      _c("div", { staticClass: "box outfit-box" }, [
+        _c("div", { staticClass: "media" }, [
+          _c(
+            "div",
+            { staticClass: "media-left" },
+            [_c("ClothingArticle", { attrs: { "clothing-item": _vm.bottom } })],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "media-right" },
+            [
+              _c("b-checkbox", {
+                model: {
+                  value: _vm.bottomDisabled,
+                  callback: function ($$v) {
+                    _vm.bottomDisabled = $$v
+                  },
+                  expression: "bottomDisabled",
+                },
+              }),
+            ],
+            1
+          ),
+        ]),
+      ]),
       _vm._v(" "),
-      _c("ClothingArticle", { attrs: { "clothing-item": _vm.shoes } }),
+      _c("div", { staticClass: "box outfit-box" }, [
+        _c("div", { staticClass: "media" }, [
+          _c(
+            "div",
+            { staticClass: "media-left" },
+            [_c("ClothingArticle", { attrs: { "clothing-item": _vm.shoes } })],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "media-right" },
+            [
+              _c("b-checkbox", {
+                model: {
+                  value: _vm.shoesDisabled,
+                  callback: function ($$v) {
+                    _vm.shoesDisabled = $$v
+                  },
+                  expression: "shoesDisabled",
+                },
+              }),
+            ],
+            1
+          ),
+        ]),
+      ]),
       _vm._v(" "),
       _c(
         "b-button",

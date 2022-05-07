@@ -8,12 +8,34 @@
           <ClothingArticle :clothing-item="top" />
         </div>
         <div class="media-right">
-          <b-checkbox />
+          <b-checkbox v-model="topDisabled" />
         </div>
       </div>
     </div>
-    <ClothingArticle :clothing-item="bottom" />
-    <ClothingArticle :clothing-item="shoes" />
+    <div class="box outfit-box">
+      <div
+        class="media"
+      >
+        <div class="media-left">
+          <ClothingArticle :clothing-item="bottom" />
+        </div>
+        <div class="media-right">
+          <b-checkbox v-model="bottomDisabled" />
+        </div>
+      </div>
+    </div>
+    <div class="box outfit-box">
+      <div
+        class="media"
+      >
+        <div class="media-left">
+          <ClothingArticle :clothing-item="shoes" />
+        </div>
+        <div class="media-right">
+          <b-checkbox v-model="shoesDisabled" />
+        </div>
+      </div>
+    </div>
     <b-button
       type="is-primary"
       @click="getAllClothes"
@@ -33,11 +55,11 @@ export default {
   data() {
     return {
       top: '',
-      topActive: true,
+      topDisabled: false,
       bottom: '',
-      bottomActive: true,
+      bottomDisabled: false,
       shoes: '',
-      shoesActive: true,
+      shoesDisabled: false,
     };
   },
   mounted() {
@@ -47,9 +69,15 @@ export default {
   },
   methods: {
     getAllClothes() {
-      this.getTop();
-      this.getBottom();
-      this.getShoes();
+      if (!this.topDisabled) {
+        this.getTop();
+      }
+      if (!this.bottomDisabled) {
+        this.getBottom();
+      }
+      if (!this.shoesDisabled) {
+        this.getShoes();
+      }
     },
     getTop() {
       axios.get('/api/top/random').then((res) => {

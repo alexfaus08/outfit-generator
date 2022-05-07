@@ -20,7 +20,7 @@
           <div class="box-content">
             <div class="my-checkbox">
               🔒
-              <b-checkbox v-model="topDisabled" />
+              <b-checkbox v-model="bottomDisabled" />
             </div>
             <div>
               <ClothingArticle :clothing-item="bottom" />
@@ -31,7 +31,7 @@
           <div class="box-content">
             <div class="my-checkbox">
               🔒
-              <b-checkbox v-model="topDisabled" />
+              <b-checkbox v-model="shoesDisabled" />
             </div>
             <div>
               <ClothingArticle :clothing-item="shoes" />

@@ -49300,11 +49300,11 @@ var render = function () {
                     _vm._v("\n            🔒\n            "),
                     _c("b-checkbox", {
                       model: {
-                        value: _vm.topDisabled,
+                        value: _vm.bottomDisabled,
                         callback: function ($$v) {
-                          _vm.topDisabled = $$v
+                          _vm.bottomDisabled = $$v
                         },
-                        expression: "topDisabled",
+                        expression: "bottomDisabled",
                       },
                     }),
                   ],
@@ -49332,11 +49332,11 @@ var render = function () {
                     _vm._v("\n            🔒\n            "),
                     _c("b-checkbox", {
                       model: {
-                        value: _vm.topDisabled,
+                        value: _vm.shoesDisabled,
                         callback: function ($$v) {
-                          _vm.topDisabled = $$v
+                          _vm.shoesDisabled = $$v
                         },
-                        expression: "topDisabled",
+                        expression: "shoesDisabled",
                       },
                     }),
                   ],

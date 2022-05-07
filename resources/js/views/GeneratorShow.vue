@@ -39,6 +39,7 @@
     <b-button
       type="is-primary"
       @click="getAllClothes"
+      @keyup.space="getAllClothes"
     >
       Generate Outfit!
     </b-button>

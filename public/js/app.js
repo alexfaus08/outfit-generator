@@ -5376,6 +5376,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -49263,7 +49264,24 @@ var render = function () {
       _vm._v(" "),
       _c(
         "b-button",
-        { attrs: { type: "is-primary" }, on: { click: _vm.getAllClothes } },
+        {
+          attrs: { type: "is-primary" },
+          on: {
+            click: _vm.getAllClothes,
+            keyup: function ($event) {
+              if (
+                !$event.type.indexOf("key") &&
+                _vm._k($event.keyCode, "space", 32, $event.key, [
+                  " ",
+                  "Spacebar",
+                ])
+              ) {
+                return null
+              }
+              return _vm.getAllClothes.apply(null, arguments)
+            },
+          },
+        },
         [_vm._v("\n    Generate Outfit!\n  ")]
       ),
     ],

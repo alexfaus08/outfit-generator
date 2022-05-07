@@ -40,7 +40,7 @@
       type="is-primary"
       @click="getAllClothes"
     >
-      Test
+      Generate Outfit!
     </b-button>
   </div>
 </template>
@@ -63,9 +63,7 @@ export default {
     };
   },
   mounted() {
-    axios.get('/api/clothing_article').then((res) => {
-      console.log(res);
-    });
+    this.getAllClothes();
   },
   methods: {
     getAllClothes() {

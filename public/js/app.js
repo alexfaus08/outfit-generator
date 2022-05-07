@@ -5394,9 +5394,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/clothing_article').then(function (res) {
-      console.log(res);
-    });
+    this.getAllClothes();
   },
   methods: {
     getAllClothes: function getAllClothes() {
@@ -49266,7 +49264,7 @@ var render = function () {
       _c(
         "b-button",
         { attrs: { type: "is-primary" }, on: { click: _vm.getAllClothes } },
-        [_vm._v("\n    Test\n  ")]
+        [_vm._v("\n    Generate Outfit!\n  ")]
       ),
     ],
     1

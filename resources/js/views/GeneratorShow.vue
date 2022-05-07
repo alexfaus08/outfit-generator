@@ -1,12 +1,16 @@
 <template>
   <div class="container is-max-desktop">
-    <div
-      class="box outfit-box"
-    >
-      <div class="is-top-right">
-        <b-checkbox class="is-top-right" />
+    <div class="box outfit-box">
+      <div
+        class="media"
+      >
+        <div class="media-left">
+          <ClothingArticle :clothing-item="top" />
+        </div>
+        <div class="media-right">
+          <b-checkbox />
+        </div>
       </div>
-      <ClothingArticle :clothing-item="top" />
     </div>
     <ClothingArticle :clothing-item="bottom" />
     <ClothingArticle :clothing-item="shoes" />
@@ -70,6 +74,7 @@ export default {
 <style scoped>
 .outfit-box {
     margin-top: 10px;
-    max-width: 50%;
+    max-width: 30%;
+
 }
 </style>

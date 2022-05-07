@@ -1,48 +1,46 @@
 <template>
-  <div class="container is-max-desktop">
-    <div class="box outfit-box">
-      <div
-        class="media"
-      >
-        <div class="media-left">
-          <ClothingArticle :clothing-item="top" />
+  <div class="container has-text-centered is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="box outfit-box">
+          <div class="box-content">
+            <div class="my-checkbox">
+              <b-checkbox v-model="topDisabled" />
+            </div>
+            <div>
+              <ClothingArticle :clothing-item="top" />
+            </div>
+          </div>
         </div>
-        <div class="media-right">
-          <b-checkbox v-model="topDisabled" />
+        <div class="box outfit-box">
+          <div class="box-content">
+            <div class="my-checkbox">
+              <b-checkbox v-model="bottomDisabled" />
+            </div>
+            <div>
+              <ClothingArticle :clothing-item="bottom" />
+            </div>
+          </div>
         </div>
+        <div class="box outfit-box">
+          <div class="box-content">
+            <div class="my-checkbox">
+              <b-checkbox v-model="shoesDisabled" />
+            </div>
+            <div>
+              <ClothingArticle :clothing-item="shoes" />
+            </div>
+          </div>
+        </div>
+        <b-button
+          type="is-primary"
+          @click="getAllClothes"
+          @keyup.space="getAllClothes"
+        >
+          Generate Outfit!
+        </b-button>
       </div>
     </div>
-    <div class="box outfit-box">
-      <div
-        class="media"
-      >
-        <div class="media-left">
-          <ClothingArticle :clothing-item="bottom" />
-        </div>
-        <div class="media-right">
-          <b-checkbox v-model="bottomDisabled" />
-        </div>
-      </div>
-    </div>
-    <div class="box outfit-box">
-      <div
-        class="media"
-      >
-        <div class="media-left">
-          <ClothingArticle :clothing-item="shoes" />
-        </div>
-        <div class="media-right">
-          <b-checkbox v-model="shoesDisabled" />
-        </div>
-      </div>
-    </div>
-    <b-button
-      type="is-primary"
-      @click="getAllClothes"
-      @keyup.space="getAllClothes"
-    >
-      Generate Outfit!
-    </b-button>
   </div>
 </template>
 
@@ -92,16 +90,22 @@ export default {
       axios.get('/api/shoe/random').then((res) => {
         this.shoes = res.data.data.image_path;
       });
-      console.log(this.shoes);
     },
   },
 };
 </script>
 
 <style scoped>
+.box-content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
 .outfit-box {
     margin-top: 10px;
-    max-width: 30%;
-
+    align-content: center;
+}
+.my-checkbox {
+    align-self: end;
 }
 </style>

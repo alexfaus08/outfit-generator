@@ -1,9 +1,6 @@
 <template>
   <body>
     <div class="container main-container has-text-centered is-max-desktop">
-      <h1 class="title mt-5">
-        Outfit Generator
-      </h1>
       <div class="columns is-centered is-mobile">
         <div class="column is-half">
           <div class="box outfit-box">

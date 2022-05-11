@@ -1,15 +1,18 @@
 import VueRouter from 'vue-router';
 import GeneratorShow from './views/GeneratorShow.vue';
+import UploadImage from './views/UploadImage.vue';
 
 export default new VueRouter({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      components: {
-        default: GeneratorShow,
-      },
+      component: GeneratorShow,
       props: true,
-      meta: { title: 'Generator' },
+    },
+    {
+      path: '/upload',
+      component: UploadImage,
     },
   ],
 });

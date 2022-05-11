@@ -29,6 +29,7 @@
     },
     "dependencies": {
         "axios": "^0.21",
-        "buefy": "^0.9.20"
+        "buefy": "^0.9.20",
+        "vue-router": "^2.8.1"
     }
 }

@@ -1,13 +1,14 @@
 <template>
- <GeneratorShow />
+  <router-view />
 </template>
 
 <script>
-import GeneratorShow from "./GeneratorShow";
+import GeneratorShow from './GeneratorShow.vue';
+
 export default {
-    name: "App",
-    components: {GeneratorShow}
-}
+  name: 'App',
+  components: { GeneratorShow },
+};
 </script>
 
 <style scoped>

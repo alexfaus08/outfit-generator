@@ -5592,7 +5592,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.validateUpload();
-      console.log(this.file);
 
       if (this.errors.length === 0) {
         var formData = new FormData();
@@ -5610,9 +5609,13 @@ __webpack_require__.r(__webpack_exports__);
           });
         })["catch"](function () {
           _this.$buefy.toast.open({
-            message: 'Server error occurred :(',
+            message: 'Server error occurred :(, image was not uploaded',
             type: 'is-danger'
           });
+        })["finally"](function () {
+          _this.file = undefined;
+          _this.clothingType = null;
+          _this.isUploaded = false;
         });
       }
     }

@@ -106,7 +106,6 @@ export default {
 
     uploadImg() {
       this.validateUpload();
-      console.log(this.file);
       if (this.errors.length === 0) {
         const formData = new FormData();
         formData.append('image', this.file);
@@ -123,9 +122,13 @@ export default {
           });
         }).catch(() => {
           this.$buefy.toast.open({
-            message: 'Server error occurred :(',
+            message: 'Server error occurred :(, image was not uploaded',
             type: 'is-danger',
           });
+        }).finally(() => {
+          this.file = undefined;
+          this.clothingType = null;
+          this.isUploaded = false;
         });
       }
     },

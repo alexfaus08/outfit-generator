@@ -6,51 +6,82 @@ use App\Models\ClothingArticle;
 use App\Models\ClothingArticleType;
 use App\TypeId;
 use Illuminate\Database\Seeder;
+use App\Services\ClothingArticleService;
 
 class ClothingArticleSeeder extends Seeder
 {
     public function run()
     {
-        $top_type_id = TypeId::Top;
-        $bottom_type_id = TypeId::Bottom;
-        $shoes_type_id = TypeId::Shoes;
-        $fullbody_type_id = TypeId::Fullbody;
+        $fileExtension = 'png';
+        $rootFolderPath = '/Users/alexander/Desktop/Clothes';
+        // tops folder
+        $topsFolder = $rootFolderPath . '/tops/';
+        $topsImages = scandir($topsFolder);
+        foreach($topsImages as $topimg) {
+            if (pathinfo($topimg)['extension'] === $fileExtension) {
+                $data = [
+                    'image_path' => $topsFolder . $topimg,
+                    'clothing_article_type' => 'top',
+                    'user_id' => 1
+                ];
+                ClothingArticleService::store($data);
+            }
+        }
+        // bottoms folder
+        $bottomsfolder = $rootFolderPath . '/bottoms/';
+        $bottomsImages = scandir($bottomsfolder);
+        foreach($bottomsImages as $bottomimg) {
+            if (pathinfo($bottomimg)['extension'] === $fileExtension) {
+                $data = [
+                    'image_path' => $bottomsfolder . $bottomimg,
+                    'clothing_article_type' => 'bottom',
+                    'user_id' => 1
+                ];
+                ClothingArticleService::store($data);
+            }
+        }
+        // shoes folder
+        $shoesfolder = $rootFolderPath . '/shoes/';
+        $shoesImages = scandir($shoesfolder);
+        foreach($shoesImages as $shoeimg) {
+            if (pathinfo($shoeimg)['extension'] === $fileExtension) {
+                $data = [
+                    'image_path' => $shoesfolder . $shoeimg,
+                    'clothing_article_type' => 'shoes',
+                    'user_id' => 1
+                ];
+                ClothingArticleService::store($data);
+            }
+        }
+        // fullbody folder
+        $fullbodyfolder = $rootFolderPath . '/fullbody/';
+        $fullbodysImages = scandir($fullbodyfolder);
+        foreach($fullbodysImages as $fullbodyimg) {
+            if (pathinfo($fullbodyimg)['extension'] === $fileExtension) {
+                $data = [
+                    'image_path' => $fullbodyfolder . $fullbodyimg,
+                    'clothing_article_type' => 'fullbody',
+                    'user_id' => 1
+                ];
+                ClothingArticleService::store($data);
+            }
+        }
+    }
 
-        ClothingArticle::create(
-            ['image_path' => '/storage/app/public/images/tops/yellow-t-shirt.png', 'clothing_article_type_id' => $top_type_id,
-            'user_id' => 1]
-        );
-        ClothingArticle::create(
-            ['image_path' => '/storage/app/public/images/tops/blue-button-up.png', 'clothing_article_type_id' => $top_type_id,
-                'user_id' => 1]
-        );
-        ClothingArticle::create(
-            ['image_path' => '/storage/app/public/images/tops/orange-button-up.png', 'clothing_article_type_id' => $top_type_id,
-                'user_id' => 1]
-        );
-        ClothingArticle::create(
-            ['image_path' => '/storage/app/public/images/bottoms/chinos.png', 'clothing_article_type_id' => $bottom_type_id,
-                'user_id' => 1]
-        );
-        ClothingArticle::create(
-            ['image_path' => '/storage/app/public/images/bottoms/khaki.png', 'clothing_article_type_id' => $bottom_type_id,
-                'user_id' => 1]
-        );
-        ClothingArticle::create(
-            ['image_path' => '/storage/app/public/images/shoes/boots.png', 'clothing_article_type_id' => $shoes_type_id,
-                'user_id' => 1]
-        );
-        ClothingArticle::create(
-            ['image_path' => '/storage/app/public/images/shoes/oxfords.png', 'clothing_article_type_id' => $shoes_type_id,
-                'user_id' => 1]
-        );
-        ClothingArticle::create(
-            ['image_path' => '/storage/app/public/images/shoes/sneakers.png', 'clothing_article_type_id' => $shoes_type_id,
-                'user_id' => 1]
-        );
-        ClothingArticle::create(
-            ['image_path' => '/storage/app/public/images/full/overalls.png', 'clothing_article_type_id' => $fullbody_type_id,
-                'user_id' => 1]
-        );
+    public function populateClothingArticleType($rootFolderPath, $clothingType, $fileExtension) {
+
+        // $fullpath = $rootFolderPath . '/fullbody/';
+        $fullpath = $rootFolderPath . '/' . $clothingType . '/';
+        $imgs = scandir($fullpath);
+        foreach($imgs as $img) {
+            if (pathinfo($img)['extension'] === $fileExtension) {
+                $data = [
+                    'image_path' => $fullpath . $img,
+                    'clothing_article_type' => $clothingType,
+                    'user_id' => 1
+                ];
+                ClothingArticleService::store($data);
+            }
+        }
     }
 }

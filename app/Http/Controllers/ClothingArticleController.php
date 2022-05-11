@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ClothingArticle;
 use App\Http\Resources\ClothingArticle as ClothingArticleResource;
 use App\Models\ClothingArticleType;
+use App\Services\ClothingArticleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +19,11 @@ class ClothingArticleController extends Controller
 
     public function store(Request $request)
     {
+        // TODO: $data = $request->validated()
+        // need to make a policy
+        // also a clothing article request class
+        // ===== ignore below this =====
+//        ClothingArticleService::store($request);
         // TODO determine if storage should be separate folders, if so change the path var to reflect
         $path = Storage::putFile('images', $request->file('image'));
         $path = '/storage/' . $path;

@@ -3,7 +3,6 @@ import GeneratorShow from './views/GeneratorShow.vue';
 import UploadImage from './views/UploadImage.vue';
 
 export default new VueRouter({
-  mode: 'history',
   routes: [
     {
       path: '/',

@@ -116,6 +116,16 @@ export default {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
+        }).then(() => {
+          this.$buefy.toast.open({
+            message: 'Image uploaded!',
+            type: 'is-success',
+          });
+        }).catch(() => {
+          this.$buefy.toast.open({
+            message: 'Server error occurred :(',
+            type: 'is-danger',
+          });
         });
       }
     },

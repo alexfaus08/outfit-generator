@@ -5589,6 +5589,8 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     uploadImg: function uploadImg() {
+      var _this = this;
+
       this.validateUpload();
       console.log(this.file);
 
@@ -5601,6 +5603,16 @@ __webpack_require__.r(__webpack_exports__);
           headers: {
             'Content-Type': 'multipart/form-data'
           }
+        }).then(function () {
+          _this.$buefy.toast.open({
+            message: 'Image uploaded!',
+            type: 'is-success'
+          });
+        })["catch"](function () {
+          _this.$buefy.toast.open({
+            message: 'Server error occurred :(',
+            type: 'is-danger'
+          });
         });
       }
     }

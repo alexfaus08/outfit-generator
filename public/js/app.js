@@ -5479,6 +5479,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -5552,12 +5554,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'UploadImage',
   data: function data() {
     return {
       clothingType: null,
-      file: {},
+      file: undefined,
       isUploaded: false,
       errors: []
     };
@@ -5581,8 +5584,24 @@ __webpack_require__.r(__webpack_exports__);
         this.errors.push('Please select a clothing type.');
       }
 
-      if (Object.keys(this.file).length === 0) {
+      if (!this.file) {
         this.errors.push('Please upload a file.');
+      }
+    },
+    uploadImg: function uploadImg() {
+      this.validateUpload();
+      console.log(this.file);
+
+      if (this.errors.length === 0) {
+        var formData = new FormData();
+        formData.append('image', this.file);
+        formData.append('clothing_article_type', this.clothingType);
+        formData.append('user_id', 1);
+        axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/clothing_article', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
       }
     }
   }
@@ -49894,10 +49913,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "b-button",
-            {
-              attrs: { type: "is-primary" },
-              on: { click: _vm.validateUpload },
-            },
+            { attrs: { type: "is-primary" }, on: { click: _vm.uploadImg } },
             [_vm._v("\n      Save Clothing Item\n    ")]
           ),
         ],

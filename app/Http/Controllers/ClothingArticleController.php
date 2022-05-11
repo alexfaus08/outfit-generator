@@ -8,6 +8,7 @@ use App\Models\ClothingArticleType;
 use App\Services\ClothingArticleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
 class ClothingArticleController extends Controller
@@ -20,13 +21,10 @@ class ClothingArticleController extends Controller
     public function store(Request $request)
     {
         // TODO: $data = $request->validated()
-        // need to make a policy
-        // also a clothing article request class
-        // ===== ignore below this =====
-//        ClothingArticleService::store($request);
         // TODO determine if storage should be separate folders, if so change the path var to reflect
-        $path = Storage::putFile('images', $request->file('image'));
-        $path = '/storage/' . $path;
+        $path = Storage::putFileAs('public/images', $request->file('image'), Str::random(40) . '.png');
+        $filename = pathinfo($path)['basename'];
+        $path = '/storage/images/' . $filename;
         $type_id = ClothingArticleType::where(['name' => $request->clothing_article_type])->first()->id;
         $clothing_article = ClothingArticle::create(
             [

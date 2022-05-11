@@ -63,7 +63,7 @@
       </b-message>
       <b-button
         type="is-primary"
-        @click="validateUpload"
+        @click="uploadImg"
       >
         Save Clothing Item
       </b-button>
@@ -72,12 +72,14 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'UploadImage',
   data() {
     return {
       clothingType: null,
-      file: {},
+      file: undefined,
       isUploaded: false,
       errors: [],
     };
@@ -97,8 +99,24 @@ export default {
       if (this.clothingType === null) {
         this.errors.push('Please select a clothing type.');
       }
-      if (Object.keys(this.file).length === 0) {
+      if (!this.file) {
         this.errors.push('Please upload a file.');
+      }
+    },
+
+    uploadImg() {
+      this.validateUpload();
+      console.log(this.file);
+      if (this.errors.length === 0) {
+        const formData = new FormData();
+        formData.append('image', this.file);
+        formData.append('clothing_article_type', this.clothingType);
+        formData.append('user_id', 1);
+        axios.post('/api/clothing_article', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
       }
     },
   },

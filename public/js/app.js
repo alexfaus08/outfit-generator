@@ -5534,12 +5534,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'UploadImage',
   data: function data() {
     return {
+      clothingType: null,
       file: {},
-      isUploaded: false
+      isUploaded: false,
+      errors: []
     };
   },
   computed: {
@@ -5551,6 +5571,19 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return url;
+    }
+  },
+  methods: {
+    validateUpload: function validateUpload() {
+      this.errors = [];
+
+      if (this.clothingType === null) {
+        this.errors.push('Please select a clothing type.');
+      }
+
+      if (Object.keys(this.file).length === 0) {
+        this.errors.push('Please upload a file.');
+      }
     }
   }
 });
@@ -49759,35 +49792,6 @@ var render = function () {
       _c(
         "section",
         [
-          _c(
-            "b-field",
-            { attrs: { label: "Clothing Type" } },
-            [
-              _c(
-                "b-select",
-                { attrs: { placeholder: "Select a clothing type" } },
-                [
-                  _c("option", { attrs: { value: "top" } }, [
-                    _vm._v("\n          Top\n        "),
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "bottom" } }, [
-                    _vm._v("\n          Bottom\n        "),
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "shoes" } }, [
-                    _vm._v("\n          Shoes\n        "),
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "fullbody" } }, [
-                    _vm._v("\n          Fullbody\n        "),
-                  ]),
-                ]
-              ),
-            ],
-            1
-          ),
-          _vm._v(" "),
           !_vm.isUploaded
             ? _c(
                 "div",
@@ -49843,9 +49847,59 @@ var render = function () {
                 }),
               ]),
           _vm._v(" "),
-          _c("b-button", { attrs: { type: "is-primary" } }, [
-            _vm._v("\n      Save Clothing Item\n    "),
-          ]),
+          _c(
+            "b-select",
+            {
+              staticClass: "mt-2",
+              attrs: { placeholder: "Select a clothing type" },
+              model: {
+                value: _vm.clothingType,
+                callback: function ($$v) {
+                  _vm.clothingType = $$v
+                },
+                expression: "clothingType",
+              },
+            },
+            [
+              _c("option", { attrs: { value: "top" } }, [
+                _vm._v("\n        Top\n      "),
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "bottom" } }, [
+                _vm._v("\n        Bottom\n      "),
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "shoes" } }, [
+                _vm._v("\n        Shoes\n      "),
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "fullbody" } }, [
+                _vm._v("\n        Fullbody\n      "),
+              ]),
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "b-message",
+            { staticClass: "mt-2", attrs: { type: "is-danger" } },
+            _vm._l(_vm.errors, function (error) {
+              return _c("div", { key: error.length }, [
+                _c("p", [
+                  _vm._v("\n          " + _vm._s(error) + "\n        "),
+                ]),
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "b-button",
+            {
+              attrs: { type: "is-primary" },
+              on: { click: _vm.validateUpload },
+            },
+            [_vm._v("\n      Save Clothing Item\n    ")]
+          ),
         ],
         1
       ),

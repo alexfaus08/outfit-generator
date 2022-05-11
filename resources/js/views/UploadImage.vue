@@ -4,22 +4,6 @@
       Upload
     </div>
     <section>
-      <b-field label="Clothing Type">
-        <b-select placeholder="Select a clothing type">
-          <option value="top">
-            Top
-          </option>
-          <option value="bottom">
-            Bottom
-          </option>
-          <option value="shoes">
-            Shoes
-          </option>
-          <option value="fullbody">
-            Fullbody
-          </option>
-        </b-select>
-      </b-field>
       <div v-if="!isUploaded">
         <b-upload
           v-model="file"
@@ -46,7 +30,41 @@
           alt="uploaded image"
         >
       </div>
-      <b-button type="is-primary">
+      <b-select
+        v-model="clothingType"
+        placeholder="Select a clothing type"
+        class="mt-2"
+      >
+        <option value="top">
+          Top
+        </option>
+        <option value="bottom">
+          Bottom
+        </option>
+        <option value="shoes">
+          Shoes
+        </option>
+        <option value="fullbody">
+          Fullbody
+        </option>
+      </b-select>
+      <b-message
+        type="is-danger"
+        class="mt-2"
+      >
+        <div
+          v-for="error in errors"
+          :key="error.length"
+        >
+          <p>
+            {{ error }}
+          </p>
+        </div>
+      </b-message>
+      <b-button
+        type="is-primary"
+        @click="validateUpload"
+      >
         Save Clothing Item
       </b-button>
     </section>
@@ -58,8 +76,10 @@ export default {
   name: 'UploadImage',
   data() {
     return {
+      clothingType: null,
       file: {},
       isUploaded: false,
+      errors: [],
     };
   },
   computed: {
@@ -69,6 +89,17 @@ export default {
         url = URL.createObjectURL(this.file);
       }
       return url;
+    },
+  },
+  methods: {
+    validateUpload() {
+      this.errors = [];
+      if (this.clothingType === null) {
+        this.errors.push('Please select a clothing type.');
+      }
+      if (Object.keys(this.file).length === 0) {
+        this.errors.push('Please upload a file.');
+      }
     },
   },
 };

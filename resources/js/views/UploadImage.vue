@@ -73,6 +73,7 @@
 
 <script>
 import axios from 'axios';
+import * as imageConversion from 'image-conversion';
 
 export default {
   name: 'UploadImage',
@@ -107,28 +108,30 @@ export default {
     uploadImg() {
       this.validateUpload();
       if (this.errors.length === 0) {
-        const formData = new FormData();
-        formData.append('image', this.file);
-        formData.append('clothing_article_type', this.clothingType);
-        formData.append('user_id', 1);
-        axios.post('/api/clothing_article', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }).then(() => {
-          this.$buefy.toast.open({
-            message: 'Image uploaded!',
-            type: 'is-success',
+        imageConversion.compressAccurately(this.file, 200).then((res) => {
+          const formData = new FormData();
+          formData.append('image', res);
+          formData.append('clothing_article_type', this.clothingType);
+          formData.append('user_id', 1);
+          axios.post('/api/clothing_article', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }).then(() => {
+            this.$buefy.toast.open({
+              message: 'Image uploaded!',
+              type: 'is-success',
+            });
+          }).catch(() => {
+            this.$buefy.toast.open({
+              message: 'Server error occurred :(, image was not uploaded',
+              type: 'is-danger',
+            });
+          }).finally(() => {
+            this.file = undefined;
+            this.clothingType = null;
+            this.isUploaded = false;
           });
-        }).catch(() => {
-          this.$buefy.toast.open({
-            message: 'Server error occurred :(, image was not uploaded',
-            type: 'is-danger',
-          });
-        }).finally(() => {
-          this.file = undefined;
-          this.clothingType = null;
-          this.isUploaded = false;
         });
       }
     },

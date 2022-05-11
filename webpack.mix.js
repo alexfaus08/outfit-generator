@@ -10,6 +10,18 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+mix.options({
+  hmrOptions: {
+    host: 'localhost',
+    port: '8080',
+  },
+});
+
+mix.webpackConfig({
+  devServer: {
+    port: '8080',
+  },
+});
 
 mix.js('resources/js/app.js', 'public/js')
   .vue()

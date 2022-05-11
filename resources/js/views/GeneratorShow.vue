@@ -1,53 +1,55 @@
 <template>
-  <div class="container has-text-centered is-max-desktop">
-    <h1 class="title mt-5">
-      Outfit Generator
-    </h1>
-    <div class="columns is-centered">
-      <div class="column is-half">
-        <div class="box outfit-box">
-          <div class="box-content">
-            <div class="my-checkbox">
-              🔒
-              <b-checkbox v-model="topDisabled" />
-            </div>
-            <div>
-              <ClothingArticle :clothing-item="top" />
-            </div>
-          </div>
-        </div>
-        <div class="box outfit-box">
-          <div class="box-content">
-            <div class="my-checkbox">
-              🔒
-              <b-checkbox v-model="bottomDisabled" />
-            </div>
-            <div>
-              <ClothingArticle :clothing-item="bottom" />
+  <body>
+    <div class="container main-container has-text-centered is-max-desktop">
+      <h1 class="title mt-5">
+        Outfit Generator
+      </h1>
+      <div class="columns is-centered is-mobile">
+        <div class="column is-half">
+          <div class="box outfit-box">
+            <div class="box-content">
+              <div class="my-checkbox">
+                🔒
+                <b-checkbox v-model="topDisabled" />
+              </div>
+              <div>
+                <ClothingArticle :clothing-item="top" />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="box outfit-box">
-          <div class="box-content">
-            <div class="my-checkbox">
-              🔒
-              <b-checkbox v-model="shoesDisabled" />
-            </div>
-            <div>
-              <ClothingArticle :clothing-item="shoes" />
+          <div class="box outfit-box">
+            <div class="box-content">
+              <div class="my-checkbox">
+                🔒
+                <b-checkbox v-model="bottomDisabled" />
+              </div>
+              <div>
+                <ClothingArticle :clothing-item="bottom" />
+              </div>
             </div>
           </div>
+          <div class="box outfit-box">
+            <div class="box-content">
+              <div class="my-checkbox">
+                🔒
+                <b-checkbox v-model="shoesDisabled" />
+              </div>
+              <div>
+                <ClothingArticle :clothing-item="shoes" />
+              </div>
+            </div>
+          </div>
+          <b-button
+            type="is-primary"
+            @click="getAllClothes"
+            @keyup.space="getAllClothes"
+          >
+            Generate Outfit!
+          </b-button>
         </div>
-        <b-button
-          type="is-primary"
-          @click="getAllClothes"
-          @keyup.space="getAllClothes"
-        >
-          Generate Outfit!
-        </b-button>
       </div>
     </div>
-  </div>
+  </body>
 </template>
 
 <script>
@@ -101,7 +103,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .box-content {
     display: flex;
     flex-direction: column;

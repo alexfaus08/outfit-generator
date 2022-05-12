@@ -21,10 +21,15 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="css">
 img {
     width:  150px;
     height: 140px;
     object-fit: scale-down;
+}
+@media screen and (min-width: 800px){
+    img {
+        transform: rotate(90deg);
+    }
 }
 </style>

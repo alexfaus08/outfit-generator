@@ -13,7 +13,7 @@ class ClothingArticleSeeder extends Seeder
     public function run()
     {
         $fileExtension = 'png';
-        $rootFolderPath = '/Users/alexander/Desktop/Clothes';
+        $rootFolderPath = '/Users/alexander/Downloads/small-clothes';
         $this->populateClothingArticleType($rootFolderPath, 'tops', 'top', $fileExtension);
         $this->populateClothingArticleType($rootFolderPath, 'bottoms', 'bottom', $fileExtension);
         $this->populateClothingArticleType($rootFolderPath, 'fullbody', 'fullbody', $fileExtension);

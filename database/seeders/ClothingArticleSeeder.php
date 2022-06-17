@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\ClothingArticle;
-use App\Models\ClothingArticleType;
-use App\TypeId;
 use Illuminate\Database\Seeder;
 use App\Services\ClothingArticleService;
 

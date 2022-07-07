@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ClothingArticle as ClothingArticleResource;
-use App\TypeId;
 use App\Models\ClothingArticle;
-use App\Models\ClothingArticleType;
-use Illuminate\Http\Request;
+use App\TypeId;
 
 class ClothingArticleBottomController extends Controller
 {
@@ -14,6 +12,7 @@ class ClothingArticleBottomController extends Controller
     {
         return ClothingArticle::where(['clothing_article_type_id' => TypeId::Bottom])->get();
     }
+
     public function show()
     {
         return new ClothingArticleResource(ClothingArticle::where(['clothing_article_type_id' => TypeId::Bottom])

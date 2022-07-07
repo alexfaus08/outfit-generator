@@ -20,11 +20,11 @@ class CreateClothingArticlesTypeTable extends Migration
         });
 
         DB::table('clothing_article_types')->insert([
-                ['name' => 'top'],
-                ['name' => 'bottom'],
-                ['name' => 'shoes'],
-                ['name' => 'fullbody'],
-            ]
+            ['name' => 'top'],
+            ['name' => 'bottom'],
+            ['name' => 'shoes'],
+            ['name' => 'fullbody'],
+        ]
         );
     }
 

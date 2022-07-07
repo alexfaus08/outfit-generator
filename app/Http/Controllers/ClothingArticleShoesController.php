@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\TypeId;
-use App\Models\ClothingArticle;
 use App\Http\Resources\ClothingArticle as ClothingArticleResource;
-use Illuminate\Http\Request;
+use App\Models\ClothingArticle;
+use App\TypeId;
 
 class ClothingArticleShoesController extends Controller
 {
@@ -13,6 +12,7 @@ class ClothingArticleShoesController extends Controller
     {
         return ClothingArticle::where(['clothing_article_type_id' => TypeId::Shoes])->get();
     }
+
     public function show()
     {
         return new ClothingArticleResource(ClothingArticle::where(['clothing_article_type_id' => TypeId::Shoes])

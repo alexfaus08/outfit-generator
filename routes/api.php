@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\ClothingArticleBottomController;
+use App\Http\Controllers\ClothingArticleController;
 use App\Http\Controllers\ClothingArticleFullbodyController;
 use App\Http\Controllers\ClothingArticleShoesController;
+use App\Http\Controllers\ClothingArticleTopController;
+use App\Http\Controllers\ClothingArticleTypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\ClothingArticleController;
-use \App\Http\Controllers\ClothingArticleTypeController;
-use \App\Http\Controllers\ClothingArticleTopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +49,3 @@ Route::get('/shoe/random', [ClothingArticleShoesController::class, 'show']);
 // clothing article type fullbody routes
 Route::get('/fullbody', [ClothingArticleFullbodyController::class, 'index']);
 Route::get('/fullbody/random', [ClothingArticleFullbodyController::class, 'show']);
-

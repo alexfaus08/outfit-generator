@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ClothingArticle;
 use App\Http\Resources\ClothingArticle as ClothingArticleResource;
+use App\Models\ClothingArticle;
 use App\Models\ClothingArticleType;
-use App\Services\ClothingArticleService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -22,9 +21,9 @@ class ClothingArticleController extends Controller
     {
         // TODO: $data = $request->validated()
         // TODO determine if storage should be separate folders, if so change the path var to reflect
-        $path = Storage::putFileAs('public/images', $request->file('image'), Str::random(40) . '.png');
+        $path = Storage::putFileAs('public/images', $request->file('image'), Str::random(40).'.png');
         $filename = pathinfo($path)['basename'];
-        $path = '/storage/images/' . $filename;
+        $path = '/storage/images/'.$filename;
         $type_id = ClothingArticleType::where(['name' => $request->clothing_article_type])->first()->id;
         $clothing_article = ClothingArticle::create(
             [
@@ -33,7 +32,8 @@ class ClothingArticleController extends Controller
                 'user_id' => $request->user_id,
             ]
         );
-        return response([ "data" => $clothing_article ], Response::HTTP_CREATED);
+
+        return response(['data' => $clothing_article], Response::HTTP_CREATED);
     }
 
     public function show(ClothingArticle $clothing_article)
@@ -54,6 +54,7 @@ class ClothingArticleController extends Controller
     public function destroy(ClothingArticle $clothing_article)
     {
         $clothing_article->delete();
+
         return response([], Response::HTTP_NO_CONTENT);
     }
 }

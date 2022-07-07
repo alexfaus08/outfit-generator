@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\TypeId;
-use App\Models\ClothingArticle;
-use App\Models\ClothingArticleType;
-use Illuminate\Http\Request;
 use App\Http\Resources\ClothingArticleTop as ClothingArticleTopResource;
-
+use App\Models\ClothingArticle;
+use App\TypeId;
 
 class ClothingArticleFullbodyController extends Controller
 {
@@ -15,6 +12,7 @@ class ClothingArticleFullbodyController extends Controller
     {
         return ClothingArticleTopResource::collection(ClothingArticle::where(['clothing_article_type_id' => TypeId::Fullbody])->get());
     }
+
     public function show()
     {
         return new ClothingArticleTopResource(ClothingArticle::where(['clothing_article_type_id' => TypeId::Fullbody])

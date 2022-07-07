@@ -8,11 +8,13 @@ class ClothingArticle extends Model
 {
     protected $guarded = [];
 
-    public function clothingArticleType() {
+    public function clothingArticleType()
+    {
         return $this->belongsTo(ClothingArticleType::class);
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }
